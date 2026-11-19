@@ -12,7 +12,7 @@ import pandas as pd
 ANNO = 2025
 GRAN_PREMIO = "British Grand Prix"
 SESSIONE = "R"
-CARTELLA_OUTPUT = Path("silverstone_2022")
+CARTELLA_OUTPUT = Path("silverstone_2025")
 
 
 def has_value(series):
