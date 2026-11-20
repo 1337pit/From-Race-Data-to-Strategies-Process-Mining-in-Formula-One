@@ -9,10 +9,10 @@ import fastf1
 import pandas as pd
 
 
-ANNO = 2025
-GRAN_PREMIO = "British Grand Prix"
-SESSIONE = "R"
-CARTELLA_OUTPUT = Path("silverstone_2025")
+YEAR = 2025
+GRAND_PRIX = "British Grand Prix"
+SESSION_TYPE = "R"
+OUTPUT_DIR = Path("silverstone_2025")
 
 
 def has_value(series):
@@ -132,13 +132,13 @@ def normalize_csv(path):
 
 
 def main():
-    CARTELLA_OUTPUT.mkdir(parents=True, exist_ok=True)
-    cache_dir = CARTELLA_OUTPUT / "cache"
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    cache_dir = OUTPUT_DIR / "cache"
     cache_dir.mkdir(parents=True, exist_ok=True)
     fastf1.Cache.configure(cache_dir=str(cache_dir))
 
     print("Recupero della sessione...")
-    session = fastf1.get_session(ANNO, GRAN_PREMIO, SESSIONE)
+    session = fastf1.get_session(YEAR, GRAND_PRIX, SESSION_TYPE)
     session.load(telemetry=False, weather=False, messages=False)
 
     print(f"Evento: {session.event['EventName']}")
@@ -147,9 +147,9 @@ def main():
 
     df = prepare_laps(session.laps)
     aggregated_df = aggregate_stints(df)
-    detailed_csv = CARTELLA_OUTPUT / "silverstone_2025_laps.csv"
+    detailed_csv = OUTPUT_DIR / "silverstone_2025_laps.csv"
     aggregated_csv = (
-        CARTELLA_OUTPUT / "silverstone_2025_laps_stints_aggregated.csv"
+        OUTPUT_DIR / "silverstone_2025_laps_stints_aggregated.csv"
     )
     df.to_csv(detailed_csv, index=False)
     aggregated_df.to_csv(aggregated_csv, index=False)
