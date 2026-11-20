@@ -16,18 +16,18 @@ The Python script downloads the lap data of a Grand Prix session through the [Fa
 The session to download is set through the constants at the top of the script:
 
 ```python
-ANNO = 2025
-GRAN_PREMIO = "British Grand Prix"
-SESSIONE = "R"
-CARTELLA_OUTPUT = Path("silverstone_2025")
+YEAR = 2025
+GRAND_PRIX = "British Grand Prix"
+SESSION_TYPE = "R"
+OUTPUT_DIR = Path("silverstone_2025")
 ```
 
 | Constant | Description | Example |
 |----------|-------------|---------|
-| `ANNO` | Season year | `2025` |
-| `GRAN_PREMIO` | Grand Prix name as understood by FastF1 (or round number) | `"British Grand Prix"` |
-| `SESSIONE` | Session identifier: `FP1`, `FP2`, `FP3`, `Q`, `S`, `SQ`, `R` | `"R"` (race) |
-| `CARTELLA_OUTPUT` | Folder where cache and CSV files are written | `Path("silverstone_2025")` |
+| `YEAR` | Season year | `2025` |
+| `GRAND_PRIX` | Grand Prix name as understood by FastF1 (or round number) | `"British Grand Prix"` |
+| `SESSION_TYPE` | Session identifier: `FP1`, `FP2`, `FP3`, `Q`, `S`, `SQ`, `R` | `"R"` (race) |
+| `OUTPUT_DIR` | Folder where cache and CSV files are written | `Path("silverstone_2025")` |
 
 The command to run the script is:
 ```bash
